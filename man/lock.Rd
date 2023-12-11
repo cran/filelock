@@ -2,7 +2,6 @@
 % Please edit documentation in R/package.R
 \name{lock}
 \alias{lock}
-\alias{filelock}
 \alias{unlock}
 \title{Advisory File Locking and Unlocking}
 \usage{
@@ -138,8 +137,8 @@ anything, but other packages might.)
 On Windows, \code{LockFileEx} is used to create the lock on the file.
 If a finite timeout is specified for the lock request, asynchronous
 (overlapped) I/O is used to wait for the locking event with a timeout.
-See more about \code{LockFileEx} here:
-\url{https://msdn.microsoft.com/en-us/library/aa365203.aspx}
+See more about \code{LockFileEx} on the first hit here:
+\url{https://www.google.com/search?q=LockFileEx}
 
 Some important points:
 \itemize{
@@ -156,7 +155,9 @@ on the main file, so that you are not affected by these problems.
 }
 
 \section{Examples}{
-\preformatted{## -------------------------------------------------------------
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{## -------------------------------------------------------------
 ## R process 1 gets an exclusive lock
 ## Warning: if you want to lock file 'myfile', always create a
 ## separate lock file instead of placing the lock on this file directly!
@@ -171,6 +172,6 @@ lock(mylockfile, timeout = 5000)
 
 ## Wait indefinetely
 lock(mylockfile, timeout = Inf)
-}
+}\if{html}{\out{</div>}}
 }
 

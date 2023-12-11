@@ -14,7 +14,7 @@ void filelock__check_interrupt_fn(void *dummy) {
   R_CheckUserInterrupt();
 }
 
-int filelock__is_interrupt_pending() {
+int filelock__is_interrupt_pending(void) {
   return !(R_ToplevelExec(filelock__check_interrupt_fn, NULL));
 }
 
@@ -106,7 +106,7 @@ int filelock__lock_wait(HANDLE file, int exclusive) {
 	CloseHandle(ov.hEvent);
 	UnlockFileEx(file, 0, 1, 0, &ov); /* ignore errors */
 	CloseHandle(file);		  /* ignore errors */
-	error("Locking interrupted", 1);
+	error("Locking interrupted");
       }
     }
   }
